@@ -1,7 +1,6 @@
 package com.pluralsight;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 
 
 public class Main {
@@ -10,33 +9,33 @@ public class Main {
 //bufferreader - closing file
 //dont forget catch @ end
         try {
+
             FileReader fileReader = new FileReader("payroll.csv");
-            BufferedReader bufReader = new BufferedReader(fileReader);
+            BufferedReader buffReader = new BufferedReader(fileReader);
 
-
-            while ((line = br.readLine()) != null) {
-
-                //| delimiter
-
-                String[] tokens = line.split("\\|");
-
-                //parse. converting
-
-                int employeeId = Integer.parseInt(tokens[0]);
-                String employeeName = tokens[1];
-                float hoursWorked = Float.parseFloat(tokens[2]);
-                float payRate = Float.parseFloat(tokens[3]);
-
-                //employee object
-
-                Employee emp = new Employee(employeeId, employeeName, hoursWorked, payRate);
-
-                //print
-                System.out.printf("ID: %d, Name: %s, Gross Pay: $%.2f%n",
-                        emp.getEmployeeId(), emp.getEmployeeName(), emp.getGrossPay());
+            String input;
+            while ((input = buffReader.readLine()) != null) {
+                Employee emp = makeEmployeeFromCode(input);
+                displayEmployee(emp);
             }
-        } catch (IOException e) {
-            System.out.println("Error reading file" + e.getMessage());
-        }
+        } catch (Exception e) {
+            System.out.println("Error");
         }
     }
+
+    public static Employee makeEmployeeFromCode(String code) {
+        String[] info = code.split("\\|");
+
+        int employeeId = Integer.parseInt(info[0]);
+        String name = info[1];
+        float hoursWorked = Float.parseFloat(info[2]);
+        double payRate = Double.parseDouble(info[3]);
+
+        return new Employee(employeeId, name, hoursWorked, payRate);
+    }
+
+    public static void displayEmployee(Employee e) {
+        System.out.printf("%d %s worked %.1f hours at a rate of $%.2f, earned $.2f\n", e.getEmployeeId(), e.getEmployeeName(), e.getHoursWorked(), e.getPayRate(), e.getGrossPay());
+
+    }
+}

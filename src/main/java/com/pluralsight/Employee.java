@@ -16,7 +16,7 @@ public class Employee {
         this.payRate = payRate;
     }
 
-    public float getGrossPay() {
+    public double getGrossPay() {
         return hoursWorked * payRate;
     }
 
