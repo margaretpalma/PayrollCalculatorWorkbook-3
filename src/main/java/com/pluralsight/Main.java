@@ -12,7 +12,7 @@ public class Main {
 
 //bufferreader - closing file
 //dont forget catch @ end
-        try(BufferedReader br = new BufferedReader(new FileReader(filepath))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filepath))) {
 
             String line;
 
@@ -20,24 +20,25 @@ public class Main {
 
                 //| delimiter
 
-                String[] tokens = line.split("\\|)");
+                String[] tokens = line.split("\\|");
 
                 //parse. converting
 
-            int employeeId = Integer.parseInt(tokens[0]);
-            String employeeName = tokens[1];
-            float hoursWorked = Float.parseFloat(tokens[2]);
-            float payRate = Float.parseFloat(tokens[3]);
+                int employeeId = Integer.parseInt(tokens[0]);
+                String employeeName = tokens[1];
+                float hoursWorked = Float.parseFloat(tokens[2]);
+                float payRate = Float.parseFloat(tokens[3]);
 
-            //employee object
+                //employee object
 
-            Employee emp = new Employee(employeeId, employeeName, hoursWorked, payRate);
+                Employee emp = new Employee(employeeId, employeeName, hoursWorked, payRate);
 
-            //print
+                //print
                 System.out.printf("ID: %d, Name: %s, Gross Pay: $%.2f%n",
                         emp.getEmployeeId(), emp.getEmployeeName(), emp.getGrossPay());
             }
-
+        } catch (IOException e) {
+            System.out.println("Error reading file" + e.getMessage());
+        }
         }
     }
-}
