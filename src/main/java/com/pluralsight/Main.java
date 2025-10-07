@@ -7,14 +7,12 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
 
-//path
-        String filepath = "EmployeePayroll";
-
 //bufferreader - closing file
 //dont forget catch @ end
-        try (BufferedReader br = new BufferedReader(new FileReader(filepath))) {
+        try {
+            FileReader fileReader = new FileReader("payroll.csv");
+            BufferedReader bufReader = new BufferedReader(fileReader);
 
-            String line;
 
             while ((line = br.readLine()) != null) {
 

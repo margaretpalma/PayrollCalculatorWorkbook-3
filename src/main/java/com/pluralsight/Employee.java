@@ -5,11 +5,11 @@ public class Employee {
     private int employeeId;
     private String employeeName;
     private float hoursWorked;
-    private float payRate;
+    private double payRate;
 
 
     //constructor
-    public Employee(int employeeId, String employeeName, float hoursWorked, float payRate) {
+    public Employee(int employeeId, String employeeName, float hoursWorked, double payRate) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.hoursWorked = hoursWorked;
@@ -20,7 +20,6 @@ public class Employee {
         return hoursWorked * payRate;
     }
 
-    //getters and setters
     public int getEmployeeId() {
         return employeeId;
     }
@@ -45,12 +44,12 @@ public class Employee {
         this.hoursWorked = hoursWorked;
     }
 
-    public float getPayRate() {
+    public double getPayRate() {
         return payRate;
     }
 
-    public void setPayRate(float payRate) {
+    public void setPayRate(double payRate) {
         this.payRate = payRate;
     }
-}
 
+}
