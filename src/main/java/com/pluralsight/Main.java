@@ -1,10 +1,17 @@
 package com.pluralsight;
 import java.io.BufferedReader;
 import java.io.FileReader;
-
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the name of the file employee file to process: ");
+        String inputFile = scanner.nextLine();
+
+        System.out.println("Enter the name of the payroll file to create: ");
+        String inputFiles = scanner.nextLine();
 
 //bufferreader - closing file
 //dont forget catch @ end
